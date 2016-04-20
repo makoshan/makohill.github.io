@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Makoshan` Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Title: Parcelable接口的使用Date: 2014-01-23 21:19:40Tag:Android
+
+对于Android来说传递复杂类型，主要是将自己的类转换为基础的字节数组，Activity之间传递数据是通过Intent实现的。 Android序列化对象主要有两种方法，实现Serializable接口或者实现Parcelable接口。实现Serializable接口是Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Makoshan` Blog">
+<meta property="og:url" content="http://makohill.github.io/2016/04/20/Android/Parcelable接口的使用/index.html">
+<meta property="og:site_name" content="Makoshan` Blog">
+<meta property="og:description" content="Title: Parcelable接口的使用Date: 2014-01-23 21:19:40Tag:Android
+
+对于Android来说传递复杂类型，主要是将自己的类转换为基础的字节数组，Activity之间传递数据是通过Intent实现的。 Android序列化对象主要有两种方法，实现Serializable接口或者实现Parcelable接口。实现Serializable接口是Java">
+<meta property="og:updated_time" content="2016-04-20T14:59:39.297Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Makoshan` Blog">
+<meta name="twitter:description" content="Title: Parcelable接口的使用Date: 2014-01-23 21:19:40Tag:Android
+
+对于Android来说传递复杂类型，主要是将自己的类转换为基础的字节数组，Activity之间传递数据是通过Intent实现的。 Android序列化对象主要有两种方法，实现Serializable接口或者实现Parcelable接口。实现Serializable接口是Java">
+  
+    <link rel="alternate" href="/atom.xml" title="Makoshan` Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/home/thrusday/workspace/makohill.github.io/public/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/home/thrusday/workspace/makohill.github.io/public/" id="logo">Makoshan` Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/home/thrusday/workspace/makohill.github.io/public/">Home</a>
+        
+          <a class="main-nav-link" href="/home/thrusday/workspace/makohill.github.io/public/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://makohill.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android/Parcelable接口的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Parcelable接口的使用/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.297Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title: Parcelable接口的使用<br>Date: 2014-01-23 21:19:40<br>Tag:Android</p>
+<blockquote>
+<p>对于<strong>Android</strong>来说传递复杂类型，主要是将自己的类转换为基础的字节数组，<strong>Activity</strong>之间传递数据是通过<strong>Intent</strong>实现的。 <strong>Android</strong>序列化对象主要有两种方法，实现<strong>Serializable</strong>接口或者实现<strong>Parcelable</strong>接口。实现<strong>Serializable</strong>接口是<strong>Java SE</strong>本身就支持的，而<strong>Parcelabl</strong>e是Android特有的功能，效率比实现<strong>Serializable</strong>接口高，而且还可以用在进程间通信(IPC)中。实现<strong>Serializable</strong>接口非常简单，声明一下就可以了。而实现<strong>Parcelable</strong>接口稍微复杂一些，但效率更高，推荐用这种方法提高性能。</p>
+</blockquote>
+<p>####Parcelable接口的作用<br>实现了<strong>Parcelable</strong>接口的实例可以将自身的状态信息（状态信息通常指的是各成员变量的值）写入<strong>Parcel</strong>，也可以从<strong>Parcel</strong>中恢复其状态。</p>
+<p>####实现<strong>Parcelable</strong>接口的方法</p>
+<ul>
+<li>实现<strong>Parcelable</strong>接口。</li>
+<li>并且实现<strong>Parcelable</strong>接口的<figure class="highlight plain"><figcaption><span>void writeToParcel(Parcel dest, int flags)```方法 。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- 自定义类型中必须含有一个名称为**CREATOR**的静态成员，该成员对象要求实现**Parcelable.Creator**接口及其方法。</span><br><span class="line"></span><br><span class="line">&gt; 简而言之：通过**writeToParcel**将你的对象映射成**Parcel**对象，再通过**createFromParcel**将**Parcel**对象映射成你的对象。也可以将**Parcel**看成是一个流，通过**writeToParcel**把对象写到流里面，在通过**createFromParcel**从流里读取对象，只不过这个过程需要你来实现，因此写的顺序和读的顺序必须一致</span><br><span class="line"></span><br><span class="line">####示例代码</span><br><span class="line">定义模型类</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>import android.os.Parcel;<br>import android.os.Parcelable;<br>public class Person implements Parcelable {<br>     //这里定义了两个变量来说明读和写的顺序要一致<br>    private Integer id;<br>    private String name;<br>    public Person() {<br>    }<br>    public Person(Integer id, String name) {</p>
+<pre><code>    this.id = id;
+    this.name = name;
+}
+
+public Integer getId() {
+    return id;
+}
+
+public void setId(Integer id) {
+    this.id = id;
+}
+
+public String getName() {
+    return name;
+}
+
+public void setName(String name) {
+    this.name = name;
+}
+
+@Override
+public int describeContents() {
+    return 0;
+}
+
+@Override
+public void writeToParcel(Parcel dest, int flags) {
+    // 把javanbean中的数据写到Parcel。先写id然后写name
+    dest.writeInt(this.id);
+    dest.writeString(this.name);
+}
+
+// 添加一个静态成员,名为CREATOR,该对象实现了Parcelable.Creator接口
+public static final Parcelable.Creator&lt;Person&gt; CREATOR = new Parcelable.Creator&lt;Person&gt;() {
+    @Override
+    public Person createFromParcel(Parcel source) {
+        // 从Parcel中读取数据，返回person对象
+        return new Person(source.readInt(), source.readString());
+    }
+
+    @Override
+    public Person[] newArray(int size) {
+        return new Person[size];
+    }
+};
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">要传递的数据是由复制数据类型组合而成时：</span><br></pre></td></tr></table></figure></p>
+<p>public class MyParcelable implements Parcelable {</p>
+<pre><code>private List&lt;MyListClass&gt; arrList = new ArrayList&lt;MyListClass&gt;();
+private int myInt = 0;
+private String str = null;
+
+public String getStr() {
+    return str;
+}
+
+public void setStr(String str) {
+    this.str = str;
+}
+
+public List&lt;MyListClass&gt; getArrList() {
+    return arrList;
+}
+
+public void setArrList(List&lt;MyListClass&gt; arrList) {
+    this.arrList = arrList;
+}
+
+public int getMyInt() {
+    return myInt;
+}
+
+public void setMyInt(int myInt) {
+    this.myInt = myInt;
+}
+
+MyParcelable() {
+    // initialization
+    arrList = new ArrayList&lt;MyListClass&gt;();
+}
+
+public MyParcelable(Parcel in) {
+    myInt = in.readInt();
+    str = in.readString();
+    in.readTypedList(arrList, MyListClass.CREATOR);
+}
+
+@Override
+public int describeContents() {
+    return 0;
+}
+
+@Override
+public void writeToParcel(Parcel outParcel, int flags) {
+    outParcel.writeInt(myInt);
+    outParcel.writeString(str);
+    //写入List类型
+    outParcel.writeTypedList(arrList);
+}
+
+public static final Parcelable.Creator&lt;MyParcelable&gt; CREATOR = new Parcelable.Creator&lt;MyParcelable&gt;() {
+
+    @Override
+    public MyParcelable createFromParcel(Parcel in) {
+        return new MyParcelable(in);
+    }
+
+    @Override
+    public MyParcelable[] newArray(int size) {
+        return new MyParcelable[size];
+    }
+};
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Parcelable接口在Android当中有非常之多的子类，Intent当中也定义了很多关于Parcelable的get、set方法，如：</span><br></pre></td></tr></table></figure></p>
+<p>Intent    putExtra(String name, Parcelable value)<br>Add extended data to the intent.</p>
+<p><t extends="" parcelable=""> T    getParcelableExtra(String name)<br>Retrieve extended data from the intent.<br>```<br>并且Intent本身也实现了Parcelable接口，因此在Android开发当中是非常推荐以Parcelable作为工具传递复制对象。</t></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Parcelable接口的使用/" data-id="cin8zn6hx000bjtxu035lwr5f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/IntelliJIDEA代理异常/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/What is included in JCenter repository in Gradle/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/home/thrusday/workspace/makohill.github.io/public/tags/Geocaching/">Geocaching</a></li><li class="tag-list-item"><a class="tag-list-link" href="/home/thrusday/workspace/makohill.github.io/public/tags/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/home/thrusday/workspace/makohill.github.io/public/tags/Geocaching/" style="font-size: 20px;">Geocaching</a> <a href="/home/thrusday/workspace/makohill.github.io/public/tags/iOS/" style="font-size: 10px;">iOS</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2012/12/">December 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/多看软件使用技巧教程/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/听/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/geocaching/什么是地理寻宝/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/豆瓣爱问共享资料插件/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/自定义vim字体颜色 /">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 makoshan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/home/thrusday/workspace/makohill.github.io/public/" class="mobile-nav-link">Home</a>
+  
+    <a href="/home/thrusday/workspace/makohill.github.io/public/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/home/thrusday/workspace/makohill.github.io/public/fancybox/jquery.fancybox.css">
+  <script src="/home/thrusday/workspace/makohill.github.io/public/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/home/thrusday/workspace/makohill.github.io/public/js/script.js"></script>
+
+  </div>
+</body>
+</html>

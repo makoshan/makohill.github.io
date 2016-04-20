@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Makoshan` Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Makoshan` Blog">
+<meta property="og:url" content="http://makohill.github.io/page/6/index.html">
+<meta property="og:site_name" content="Makoshan` Blog">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Makoshan` Blog">
+<meta name="twitter:description">
+  
+    <link rel="alternate" href="/atom.xml" title="Makoshan` Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/home/thrusday/workspace/makohill.github.io/public/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/home/thrusday/workspace/makohill.github.io/public/" id="logo">Makoshan` Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/home/thrusday/workspace/makohill.github.io/public/">Home</a>
+        
+          <a class="main-nav-link" href="/home/thrusday/workspace/makohill.github.io/public/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://makohill.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Android/判断Android设备是否连接网络" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/判断Android设备是否连接网络/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.297Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title: 判断Android设备是否连接网络<br>Date: 2014-03-07 23:34:32<br>Tag:Android</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">  * 判断Android客户端网络是否连接 </span><br><span class="line">  * <span class="doctag">@param</span> context</span><br><span class="line">  * <span class="doctag">@return</span> 真假</span><br><span class="line">  */</span><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">checkNet</span><span class="params">(Context context)</span> </span>&#123;   </span><br><span class="line">           </span><br><span class="line">        <span class="keyword">try</span> &#123;   </span><br><span class="line">            ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);   </span><br><span class="line">            <span class="keyword">if</span> (connectivity != <span class="keyword">null</span>) &#123;   </span><br><span class="line">               </span><br><span class="line">                NetworkInfo info = connectivity.getActiveNetworkInfo();   </span><br><span class="line">                <span class="keyword">if</span> (info != <span class="keyword">null</span> &amp;&amp; info.isConnected()) &#123;   </span><br><span class="line">                   </span><br><span class="line">                    <span class="keyword">if</span> (info.getState() == NetworkInfo.State.CONNECTED) &#123;   </span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;   </span><br><span class="line">                    &#125;   </span><br><span class="line">                &#125;   </span><br><span class="line">            &#125;   </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;   </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;   </span><br><span class="line">&#125;   </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码只能判断是否有可用的连接，而不能判断是否能连网<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">* 检验网络连接 并toast提示</span><br><span class="line">* </span><br><span class="line">* <span class="meta">@return</span></span><br><span class="line">*/</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">note_Intent</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line">	ConnectivityManager con = (ConnectivityManager) context</span><br><span class="line">		.getSystemService(Context.CONNECTIVITY_SERVICE);</span><br><span class="line">	NetworkInfo networkinfo = con.getActiveNetworkInfo();</span><br><span class="line">	<span class="keyword">if</span> (networkinfo == <span class="keyword">null</span> || !networkinfo.isAvailable()) &#123;</span><br><span class="line">	<span class="comment">// 当前网络不可用</span></span><br><span class="line">		Toast.makeText(context.getApplicationContext(), <span class="string">"请先连接Internet！"</span>,</span><br><span class="line">		Toast.LENGTH_SHORT).show();</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">boolean</span> wifi = con.getNetworkInfo(ConnectivityManager.TYPE_WIFI)</span><br><span class="line">		.isConnectedOrConnecting();</span><br><span class="line">	<span class="keyword">if</span> (!wifi) &#123; <span class="comment">// 提示使用wifi</span></span><br><span class="line">		Toast.makeText(context.getApplicationContext(), <span class="string">"建议您使用WIFI以减少流量！"</span>,</span><br><span class="line">		Toast.LENGTH_SHORT).show();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####android中判断网络连接是否可用</p>
+<ul>
+<li><p>判断网络连接是否可用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNetworkAvailable</span><span class="params">(Context context)</span> </span>&#123;   </span><br><span class="line">        ConnectivityManager cm = (ConnectivityManager) context   </span><br><span class="line">                .getSystemService(Context.CONNECTIVITY_SERVICE);   </span><br><span class="line">        <span class="keyword">if</span> (cm == <span class="keyword">null</span>) &#123;   </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">　　　　　　　<span class="comment">//如果仅仅是用来判断网络连接</span></span><br><span class="line">　　　　　　  <span class="comment">//则可以使用 cm.getActiveNetworkInfo().isAvailable();  </span></span><br><span class="line">            NetworkInfo[] info = cm.getAllNetworkInfo();   </span><br><span class="line">            <span class="keyword">if</span> (info != <span class="keyword">null</span>) &#123;   </span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; info.length; i++) &#123;   </span><br><span class="line">                    <span class="keyword">if</span> (info[i].getState() == NetworkInfo.State.CONNECTED) &#123;   </span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">true</span>;   </span><br><span class="line">                    &#125;   </span><br><span class="line">                &#125;   </span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断GPS是否打开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isGpsEnabled</span><span class="params">(Context context)</span> </span>&#123;   </span><br><span class="line">        LocationManager lm = ((LocationManager) context   </span><br><span class="line">                .getSystemService(Context.LOCATION_SERVICE));   </span><br><span class="line">        List&lt;String&gt; accessibleProviders = lm.getProviders(<span class="keyword">true</span>);   </span><br><span class="line">        <span class="keyword">return</span> accessibleProviders != <span class="keyword">null</span> &amp;&amp; accessibleProviders.size() &gt; <span class="number">0</span>;   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断WIFI是否打开</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isWifiEnabled</span><span class="params">(Context context)</span> </span>&#123;   </span><br><span class="line">        ConnectivityManager mgrConn = (ConnectivityManager) context   </span><br><span class="line">                .getSystemService(Context.CONNECTIVITY_SERVICE);   </span><br><span class="line">        TelephonyManager mgrTel = (TelephonyManager) context   </span><br><span class="line">                .getSystemService(Context.TELEPHONY_SERVICE);   </span><br><span class="line">        <span class="keyword">return</span> ((mgrConn.getActiveNetworkInfo() != <span class="keyword">null</span> &amp;&amp; mgrConn   </span><br><span class="line">                .getActiveNetworkInfo().getState() == NetworkInfo.State.CONNECTED) || mgrTel   </span><br><span class="line">                .getNetworkType() == TelephonyManager.NETWORK_TYPE_UMTS);   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断是否是3G网络</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">is3rd</span><span class="params">(Context context)</span> </span>&#123;   </span><br><span class="line">        ConnectivityManager cm = (ConnectivityManager) context   </span><br><span class="line">                .getSystemService(Context.CONNECTIVITY_SERVICE);   </span><br><span class="line">        NetworkInfo networkINfo = cm.getActiveNetworkInfo();   </span><br><span class="line">        <span class="keyword">if</span> (networkINfo != <span class="keyword">null</span>   </span><br><span class="line">                &amp;&amp; networkINfo.getType() == ConnectivityManager.TYPE_MOBILE) &#123;   </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;   </span><br><span class="line">        &#125;   </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;   </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断是wifi还是3g网络,用户的体现性在这里了，wifi就可以建议下载或者在线播放。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isWifi</span><span class="params">(Context context)</span> </span>&#123;   </span><br><span class="line">            ConnectivityManager cm = (ConnectivityManager) context   </span><br><span class="line">                    .getSystemService(Context.CONNECTIVITY_SERVICE);   </span><br><span class="line">            NetworkInfo networkINfo = cm.getActiveNetworkInfo();   </span><br><span class="line">            <span class="keyword">if</span> (networkINfo != <span class="keyword">null</span>   </span><br><span class="line">                    &amp;&amp; networkINfo.getType() == ConnectivityManager.TYPE_WIFI) &#123;   </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;   </span><br><span class="line">            &#125;   </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;   </span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/判断Android设备是否连接网络/" data-id="cin8zn6i3000ejtxusk1f4lj1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android/在Fragment中切换Viewpager" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/在Fragment中切换Viewpager/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.297Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title: 在Fragment中切换ViewPager<br>Date: 2014-07-04 10:02:40<br>tags:Android</p>
+<p>####在ViewPager的Activity中添加如下方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public ViewPager getPager() &#123;</span><br><span class="line">    return viewPager;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####在Fragment中调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((MainActivity) getActivity()).getPager().setCurrentItem(1);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/在Fragment中切换Viewpager/" data-id="cin8zn6i4000fjtxuxssrx51y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android/Android 网络通信框架Volley简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android 网络通信框架Volley简介/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.293Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title:Android 网络通信框架Volley简介<br>Date: 2014-01-28 21:46:09<br>Tag:Android</p>
+<p>Volley主页<a href="https://android.googlesource.com/platform/frameworks/volley" target="_blank" rel="external">https://android.googlesource.com/platform/frameworks/volley</a></p>
+<p><a href="http://www.youtube.com/watch?v=yhv8l9F44qo&amp;feature=player_embedded" target="_blank" rel="external">http://www.youtube.com/watch?v=yhv8l9F44qo&amp;feature=player_embedded</a></p>
+<p>####什么是Volley</p>
+<p>在这之前，我们在程序中需要和网络通信的时候，大体使用的东西莫过于<strong>AsyncTaskLoader，HttpURLConnection，AsyncTask，HTTPClient（Apache）</strong>等，今年的Google I/O 2013上，<strong>Volley</strong>发布了。Volley是Android平台上的网络通信库，能使网络通信更快，更简单，更健壮。<br>这是Volley名称的由来： <strong>a burst or emission of many things or a large amount at once</strong><br>在Google IO的演讲上，其配图是一幅发射火弓箭的图，有点类似流星。见下图</p>
+<p><img src="http://makoshan.u.qiniudn.com/voelly1.jpg" alt="voelly1"></p>
+<p>其实，从这幅图，我们也可以看出来，Volley特别适合数据量不大但是通信频繁的场景。</p>
+<p>####Volley引入的背景<br>在以前，我们可能面临如下很多麻烦的问题。</p>
+<p>比如以前从网上下载图片的步骤可能是这样的流程：</p>
+<ul>
+<li>在ListAdapter#getView()里开始图像的读取。</li>
+<li>通过AsyncTask等机制使用HttpURLConnection从服务器去的图片资源</li>
+<li>在AsyncTask#onPostExecute()里设置相应ImageView的属性。</li>
+</ul>
+<p>而在Volley下，只需要一个函数即可，详细见后面的例子。</p>
+<p>再比如，屏幕旋转的时候，有时候会导致再次从网络取得数据。为了避免这种不必要的网络访问，我们可能需要自己写很多针对各种情况的处理，比如<strong>cache</strong>什么的。<br>再有，比如ListView的时候，我们滚动过快，可能导致有些网络请求返回的时候，早已经滚过了当时的位置，根本没必要显示在list里了，虽然我们可以通过ViewHolder来保持url等来实现防止两次取得，但是那些已经没有必须要的数据，还是会浪费系统的各种资源。</p>
+<p>####Volley提供的功能<br>简单来说，它提供了如下的便利功能：</p>
+<ul>
+<li>JSON，图像等的异步下载；</li>
+<li>网络请求的排序（<strong>scheduling</strong>）</li>
+<li>网络请求的优先级处理</li>
+<li>缓存</li>
+<li>多级别取消请求</li>
+<li>和<strong>Activity</strong>和生命周期的联动（Activity结束时同时取消所有网络请求）</li>
+</ul>
+<h4 id="使用前的准备"><a href="#使用前的准备" class="headerlink" title="使用前的准备"></a>使用前的准备</h4><p>引入Volley非常简单，首先，从git库先克隆一个下来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://android.googlesource.com/platform/frameworks/volley</span><br></pre></td></tr></table></figure></p>
+<p>然后编译为jar包，再在自己的工程里import进来。</p>
+<p>注意，这个库要求最低SDK版本为Froyo，即至少要设置android:minSdkVersion为8以上。</p>
+<p>####使用例子<br>下面简单看看如何使用Volley</p>
+<p>####最简单的get请求<br>这个例子很简单，从网络取得JSON对象，然后打印出来。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mQueue = Volley.newRequestQueue(getApplicationContext());</span><br><span class="line">mQueue.add(<span class="keyword">new</span> JsonObjectRequest(Method.GET, url, <span class="keyword">null</span>,</span><br><span class="line">            <span class="keyword">new</span> Listener() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(JSONObject response)</span> </span>&#123;</span><br><span class="line">                    Log.d(TAG, <span class="string">"response : "</span> + response.toString());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, <span class="keyword">null</span>));</span><br><span class="line">mQueue.start();</span><br></pre></td></tr></table></figure></p>
+<p>####给ImageView设置图片源</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// imageView是一个ImageView实例</span></span><br><span class="line"><span class="comment">// ImageLoader.getImageListener的第二个参数是默认的图片resource id</span></span><br><span class="line"><span class="comment">// 第三个参数是请求失败时候的资源id，可以指定为0</span></span><br><span class="line">ImageListener listener = ImageLoader.getImageListener(imageView, android.R.drawable.ic_menu_rotate, android.R.drawable.ic_delete);</span><br><span class="line">mImageLoader.get(url, listener);</span><br></pre></td></tr></table></figure>
+<p>ImageLoader的方法都需要从主线程里来调用。</p>
+<h4 id="使用NetworkImageView"><a href="#使用NetworkImageView" class="headerlink" title="使用NetworkImageView"></a>使用NetworkImageView</h4><p>Volley提供了一个新的控件<strong>NetworkImageView</strong>来代替传统的<strong>ImageView</strong>，这个控件的图片属性可以通过</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mImageView.setImageUrl(url, imageLoader)</span><br></pre></td></tr></table></figure>
+<p>来设定。而且，这个控件在被从父控件detach的时候，会自动取消网络请求的，即完全不用我们担心相关网络请求的生命周期问题。<br>示例代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mImageLoader = <span class="keyword">new</span> ImageLoader(mRequestQueue, <span class="keyword">new</span> BitmapLruCache());</span><br><span class="line">... ...</span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span>(holder.imageRequest != <span class="keyword">null</span>) &#123;</span><br><span class="line">    holder.imageRequest.cancel();</span><br><span class="line">&#125;</span><br><span class="line">holder.imageRequest = mImageLoader.get(BASE_UR + item.image_url, holder.imageView, R.drawable.loading, R.drawable.error);</span><br></pre></td></tr></table></figure>
+<p>注意，这里使用的不是ImageView控件，而是Volley新提供的<strong>com.android.volley.NetworkImageView</strong>。</p>
+<p>另外，注意这里：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mImageLoader = <span class="keyword">new</span> ImageLoader(mRequestQueue, <span class="keyword">new</span> BitmapLruCache());</span><br></pre></td></tr></table></figure>
+<p>ImageLoader构造函数的第二个参数是一个ImageCache的实例（严格来说，是实现ImageCache接口的某具体类的实例）<br><strong>ImageCache</strong>的定义如下（在ImageLoader.java里）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Simple cache adapter interface. If provided to the ImageLoader, it</span><br><span class="line"> * will be used as an L1 cache before dispatch to Volley. Implementations</span><br><span class="line"> * must not block. Implementation with an LruCache is recommended.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ImageCache</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmap</span><span class="params">(String url)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putBitmap</span><span class="params">(String url, Bitmap bitmap)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面的网址一个lru的cache实现例子，请参考：</p>
+<p><a href="https://github.com/suwayuki/VolleySample/blob/master/src/jp/classmethod/android/sample/volley/BitmapCache.java" target="_blank" rel="external">https://github.com/suwayuki/VolleySample/blob/master/src/jp/classmethod/android/sample/volley/BitmapCache.java</a></p>
+<p>####使用自己定制的request</p>
+<p>我们也可以通过继承Request根据自己的需求来定制自己的<strong>request</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Response <span class="title">parseNetworkResponse</span><span class="params">(NetworkResponse response)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String json = <span class="keyword">new</span> String(</span><br><span class="line">                response.data, HttpHeaderParser.parseCharset(response.headers));</span><br><span class="line">        <span class="keyword">return</span> Response.success(</span><br><span class="line">                gson.fromJson(json, clazz), HttpHeaderParser.parseCacheHeaders(response));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">        <span class="keyword">return</span> Response.error(<span class="keyword">new</span> ParseError(e));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (JsonSyntaxException e) &#123;</span><br><span class="line">        <span class="keyword">return</span> Response.error(<span class="keyword">new</span> ParseError(e));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>里面使用的<strong>gson</strong>（com.google.gson.Gson）是JSON的序列化和反序列化的库，可以在JSON和java model object之间进行转换。</p>
+<p>以下是使用自定制request的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mRequestQueue.add( <span class="keyword">new</span> GsonRequest(url, ListResponse.class, <span class="keyword">null</span>,</span><br><span class="line">    <span class="keyword">new</span> Listener() &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResponse</span><span class="params">(ListResponse response)</span> </span>&#123;</span><br><span class="line">            appendItemsToList(response.item);</span><br><span class="line">            notifyDataSetChanged();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>####Volley的架构设计</p>
+<p>Volley使用了线程池来作为基础结构，主要分为主线程，cache线程和network线程。<br>主线程和cache线程都只有一个，而<strong>NetworkDispatcher</strong>线程可以有多个，这样能解决比并行问题。如下图:</p>
+<p><img src="http://makoshan.u.qiniudn.com/voelly2.jpg" alt="Image Title"></p>
+<p>如果在一个Activity里面启动了网络请求，而在这个网络请求还没返回结果的时候，如果Activity被结束了，则我们需要写如下代码作为防守：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Result r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (getActivity() == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Activity被终止之后，如果继续使用其中的Context等，除了无辜的浪费CPU，电池，网络等资源，有可能还会导致程序crash，所以，我们需要处理这种一场情况。</p>
+<p>使用Volley的话，我们可以在Activity停止的时候，同时取消所有或部分未完成的网络请求。</p>
+<p>Volley里所有的请求结果会返回给主进程，如果在主进程里取消了某些请求，则这些请求将不会被返回给主线程。<br>比如，可以针对某些个request做取消操作：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (Request &lt;?&gt; req : mInFlightRequests) &#123;</span><br><span class="line">        req.cancel();</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者，取消这个队列里的所有请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> </span><br><span class="line"><span class="function">pubic <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mRequestQueue.cancelAll(<span class="keyword">this</span>);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也可以根据RequestFilter或者Tag来终止某些请求：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mRequestQueue.cancelAll( <span class="keyword">new</span> RequestFilter() &#123;&#125;)</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// or</span></span><br><span class="line">    mRequestQueue.cancelAll(<span class="keyword">new</span> Object());</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></p>
+<p>####总结</p>
+<p>从演讲的例子来看，Volley应该是简化了网络通信的一些开发，特别是针对如下两种情况：</p>
+<ul>
+<li>JSON对象</li>
+<li>图片加载</li>
+</ul>
+<p>但是这个东西也有不实用的地方，比如大数据（large payloads ），流媒体，这些case，还需要使用原始的方法，比如Download Manager等。总之，如果你要编写网络程序，是不是可以考虑开始使用Volley呢？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android 网络通信框架Volley简介/" data-id="cin8zn6h50002jtxu3zbdrzpw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android/Android应用程序中打开指定的豌豆荚下载页面" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android应用程序中打开指定的豌豆荚下载页面/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.293Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title: Android应用程序中打开指定的豌豆荚下载页面<br>Date: 2014-11-07 20:07:00<br>Tag:Android</p>
+<p>类似于打开Google Play的实现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(playAppUrl));</span><br><span class="line">browserIntent.setClassName(&quot;com.android.vending&quot;, &quot;com.android.vending.AssetBrowserActivity&quot;);</span><br><span class="line">browserIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</span><br></pre></td></tr></table></figure></p>
+<p>豌豆荚没有提供这种链接，只能使用：用<code>market:// url</code>，豌豆荚对这个页面做了手机浏览器优化，只要用户装了豌豆荚客户端就可以直接下载。但是存在一些的偏差，如果你的手机没有安装豌豆荚，但是安装了类似的应用下载的软件，链接会打开其他应用，如酷市场。</p>
+<p>我们这边希望豌豆荚提高一个接口，可以直接跳转到豌豆荚应用详情页，如果检查没有安装豌豆荚，我们会提醒用户先下载豌豆荚。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android应用程序中打开指定的豌豆荚下载页面/" data-id="cin8zn6ha0003jtxue18q5gof" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android/Android获取当前系统时间" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android获取当前系统时间/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.293Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title: Android获取当前系统时间<br>Date: 2014-05-02 20:13:51<br>Tag:Android</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Time time =<span class="keyword">new</span> Time();</span><br><span class="line">            time.setToNow();</span><br><span class="line">            String currentTime=time.format(<span class="string">"%Y-%m-%d %H:%M:%S"</span>);</span><br><span class="line">            Log.i(<span class="string">"onStartCommand"</span>, currentTime);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android获取当前系统时间/" data-id="cin8zn6hb0004jtxu4vo9wad6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android/Android xxx is not translated in zh解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android xxx is not translated in zh解决办法/" class="article-date">
+  <time datetime="2016-04-20T14:59:39.293Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title:Android xxx is not translated in zh解决办法<br>Date: 2014-07-09 08:51:00<br>tags:MyException android studio</p>
+<p>####问题<br>Android Studio正式版签名的时候出现：Android xxx is not translated in zh</p>
+<h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>Umeng的包里面的values-zh干扰导致问题。</p>
+<p>####暴力解决<br>强制不翻译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;resources</span><br><span class="line">  xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">  tools:ignore=&quot;MissingTranslation&quot; &gt;</span><br><span class="line">&lt;/resources&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Android/Android xxx is not translated in zh解决办法/" data-id="cin8zn6g00001jtxuq6k41l7s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/hello-world/" class="article-date">
+  <time datetime="2016-04-20T12:33:35.869Z" itemprop="datePublished">2016-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2016/04/20/hello-world/" data-id="cin8zn6eq0000jtxu3o8hp3nq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-geocaching/你从未认识你的城市" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2015/12/24/geocaching/你从未认识你的城市/" class="article-date">
+  <time datetime="2015-12-24T10:13:00.000Z" itemprop="datePublished">2015-12-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/home/thrusday/workspace/makohill.github.io/public/2015/12/24/geocaching/你从未认识你的城市/">你从未认识你的城市</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Tag:Geocaching<br>呆深圳快两年，宅的属性很少参加户外运动，却因为玩游戏，跑遍了深圳各个好玩的地方。扩大了朋友圈。社区里应该喜欢折腾的人不少，顺便安利几个户外游戏。</p>
+<p>Ingress</p>
+<p>最早接触的是Ingress ,因为自己本身是 Android 开发者，对待 Google 出品，当然是装装装的信仰充值。初上手，完全搞不懂怎么操作，后来住在我附近的一位香港玩家，带我玩了一次，才算入门。</p>
+<p>后来因此认识不少有意思的人，遇到很多有意思的事情。在户外刷 ingress 在，经常会有人在游戏里@你，“正好我也在附近，要不要见面认识一下”，专业术语面基。有次在园博园，有个玩家得知我是开发者，还要要内推他们公司。也见证了有人通过 Ingress 找到女朋友，通过 Ingress表白。有玩家因为要去上海，在我家楼下丢了好多游戏 portal key 送给我。后来还参加了 Ingress 官方在广州举办的官方活动，参加 GDG 也变成了 ingress 面基。</p>
+<p>有段时间每天下班都不直接回家，把路上的点都刷一遍。去各个地方做 mission (任务)。很多任务设置都有意思。介绍风土人情和历史文化。去外地旅游的第一件事情也是打开游戏。顺着 portal 走，在游戏里问当地土著那些小众好玩的地方。Ingress 渐渐成了生活的一部分。</p>
+<p>Geocaching</p>
+<p>对于很多人来说，Geocaching 可能一个陌生的单词，简单讲就是在某个地点藏一个盒子，盒子内放一张签名的纸条，然后把盒子的描述和 GPS 地理位置公布在网上，根据这些信息，网友可以使用GPS设备找到这个盒子，把自己的名字签到上面，然后把盒子放回。你可理解这是一个藏纸条的游戏，当然你也可以藏真实的金币。Geocaching 允许网友分享自己的宝藏信息。鼓励更多人走出去，享受户外，更好的亲近大自然。</p>
+<p>早期玩家大都通过手持 GPS 寻宝，但是由于需要专门的设备，有普及门槛。随着这几年智能手机普及，手机 GPS 定位越来越精确，加上手机基站的辅助，虽然不如手持GPS 那么可靠。但是对于寻宝基本没有问题。</p>
+<p>地理寻宝的魅力</p>
+<ul>
+<li>宝主会介绍藏点的周围的环境，顺带介绍周围好的餐馆，吃货福利。</li>
+<li>考验勇气，最近碰到一个藏点在高档小区的后花园，你要突破保安的询问，顺利的进入小区。</li>
+<li>多重宝，要填词解方程，体验解密的快感</li>
+<li>做侦探的感觉，很多时候寻宝的过程，就是还原案发现场 ，运用基本演绎法则，想象那里才算最佳的藏宝位置。然后过去找，果真在那里。</li>
+<li>多人的围猎活动，团队合作， 避开麻瓜。</li>
+</ul>
+<p>拼啦</p>
+<p>号称中国版的 Ingress ，但是开发者的本土化做的很好，集优惠券。刚开始玩我是拒绝的，后来拿到两个 B 站的高级会员、多张电影票，还有 Dota 游戏手办。为了集齐更多东西，开始跟别人交换卡片。初期玩家少，我老脸皮推荐给了一位学量子物理的 Ingress 玩家。为此聊起游戏里的物理学的问题。从新发现的更多好玩的游戏。</p>
+<p>为了集齐七龙珠，与他人的更多地交流，或者正是这个游戏的魅力。</p>
+<p>It’s time to move</p>
+<p>总有人说要去看世界，行万里路，往往看到的都是地人都不会去的地方。认识你的城市，融入当地人的生活，认识周围有意思的人（好像是陌陌的广告）。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2015/12/24/geocaching/你从未认识你的城市/" data-id="cin8zn6my001qjtxu2y7wqlha" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-iOS/UIActivityViewController callback" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2015/07/28/iOS/UIActivityViewController callback/" class="article-date">
+  <time datetime="2015-07-28T15:11:00.000Z" itemprop="datePublished">2015-07-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/home/thrusday/workspace/makohill.github.io/public/2015/07/28/iOS/UIActivityViewController callback/">UIActivityViewController callback</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//保存图片</span><br><span class="line">    func savePhoto()&#123;</span><br><span class="line">        itemsToShare=[AnyObject]()</span><br><span class="line">        let imageData=UIImagePNGRepresentation(self.phoneImageView.image!)</span><br><span class="line">        self.itemsToShare.append(UIImage(data: imageData!)!)</span><br><span class="line">        let activityViewController = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)</span><br><span class="line">        let completionItems: UIActivityViewControllerCompletionWithItemsHandler = &#123; (activityType: String?, completed: Bool, returnedItems: [AnyObject]?, activityError: NSError?) -&gt; Void in</span><br><span class="line">            if completed == true &#123;</span><br><span class="line">            self.navigationController?.navigationBar.backgroundColor=UIColor.redColor()</span><br><span class="line">                self.dismissViewControllerAnimated(true, completion: nil)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        activityViewController.completionWithItemsHandler=completionItems</span><br><span class="line">        presentViewController(activityViewController, animated: false, completion: nil)</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2015/07/28/iOS/UIActivityViewController callback/" data-id="cin8zn6n2001ujtxu9zbvwjeq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/home/thrusday/workspace/makohill.github.io/public/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-geocaching/Android平台又一选择：C-geo简介" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/home/thrusday/workspace/makohill.github.io/public/2015/06/06/geocaching/Android平台又一选择：C-geo简介/" class="article-date">
+  <time datetime="2015-06-06T21:46:00.000Z" itemprop="datePublished">2015-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/home/thrusday/workspace/makohill.github.io/public/2015/06/06/geocaching/Android平台又一选择：C-geo简介/">Android 平台又一选择:c-geo简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>现在的智能手机越来越普及，手机的内置的GPS也越来越精确，再加上手机基站（A-GPS）的辅助，手机定位误差可以达到10米以内。虽然对于寻宝来说误差还是很大，但是辅助替他信息，也能找到宝藏,使用手机寻宝，官方客户端当然是第一选择。但是限于官方客户端种种限制，我在这里推荐一款第三方的客户端c:geo。</p>
+<p>c:geo是由carnero开发的一款第三方的客户端，并且已经开源。现在可以在Google Play和国内的应用市场下载。</p>
+<p>投稿Geocaching.cn<br><a href="http://www.geocaching.cn/2015/04/android-another-choice-cgeo/" target="_blank" rel="external">全文阅读</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://makohill.github.io/home/thrusday/workspace/makohill.github.io/public/2015/06/06/geocaching/Android平台又一选择：C-geo简介/" data-id="cin8zn6l4001njtxu90xyoz6l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/home/thrusday/workspace/makohill.github.io/public/tags/Geocaching/">Geocaching</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/home/thrusday/workspace/makohill.github.io/public/page/5/">&laquo; __('prev')</a><a class="page-number" href="/home/thrusday/workspace/makohill.github.io/public/">1</a><span class="space">&hellip;</span><a class="page-number" href="/home/thrusday/workspace/makohill.github.io/public/page/4/">4</a><a class="page-number" href="/home/thrusday/workspace/makohill.github.io/public/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/home/thrusday/workspace/makohill.github.io/public/page/7/">7</a><a class="extend next" rel="next" href="/home/thrusday/workspace/makohill.github.io/public/page/7/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/home/thrusday/workspace/makohill.github.io/public/tags/Geocaching/">Geocaching</a></li><li class="tag-list-item"><a class="tag-list-link" href="/home/thrusday/workspace/makohill.github.io/public/tags/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/home/thrusday/workspace/makohill.github.io/public/tags/Geocaching/" style="font-size: 20px;">Geocaching</a> <a href="/home/thrusday/workspace/makohill.github.io/public/tags/iOS/" style="font-size: 10px;">iOS</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/07/">July 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2014/12/">December 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2014/10/">October 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2014/01/">January 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2013/07/">July 2013</a></li><li class="archive-list-item"><a class="archive-list-link" href="/home/thrusday/workspace/makohill.github.io/public/archives/2012/12/">December 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/多看软件使用技巧教程/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/听/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/geocaching/什么是地理寻宝/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/豆瓣爱问共享资料插件/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/home/thrusday/workspace/makohill.github.io/public/2016/04/20/Tool/自定义vim字体颜色 /">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 makoshan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/home/thrusday/workspace/makohill.github.io/public/" class="mobile-nav-link">Home</a>
+  
+    <a href="/home/thrusday/workspace/makohill.github.io/public/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/home/thrusday/workspace/makohill.github.io/public/fancybox/jquery.fancybox.css">
+  <script src="/home/thrusday/workspace/makohill.github.io/public/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/home/thrusday/workspace/makohill.github.io/public/js/script.js"></script>
+
+  </div>
+</body>
+</html>
