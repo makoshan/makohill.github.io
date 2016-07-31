@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Wiki
-description: 人越学越觉得自己无知
+title: Opencaching Wiki
+description: opencaching
 keywords: 维基, Wiki
 comments: false
 menu: 维基
 permalink: /wiki/
 ---
 
-> 记多少快捷键会让脑袋爆炸呢？
+> Opencaching.org.cn 中国地理寻宝
 
 <ul class="listing">
 {% for wiki in site.wiki %}

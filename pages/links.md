@@ -1,16 +1,24 @@
 ---
 layout: page
 title: Links
-description: 没有链接的博客是孤独的
+description: opencachings
 keywords: 友情链接
 comments: true
-menu: 链接
+menu: 相关链接
 permalink: /links/
 ---
 
-> God made relatives. Thank God we can choose our friends.
 
-* [Connie酱](http://biedan.org)
-* [只宁静不致远](http://zxning.github.io/)
-* [Blog Something](http://chenxiaoyoyo.github.io)
-* [码志](http://mazhuang.org)
+> Geocaching  YouTube 视频	
+* [HeadHardHat](http://www.youtube.com/user/headhardhat)
+* [Geocache Spoilers](http://www.youtube.com/user/geocachespoilers)
+* [The Geocaching Doc](http://www.youtube.com/user/thegcdoc)
+* [The Geocaching Vlogger](http://www.youtube.com/user/mngeocaching)
+* [Geo Paul](http://www.youtube.com/user/MrGeoPaul)
+* [GEOvloger](http://www.youtube.com/user/geovloger)
+* [Podcacher](http://www.podcacher.com/)
+* [Twin Cities GeoCaching PodCast	](http://www.tcgcpc.com/)
+* [The Oh Beep! Geocaching Podcast](http://www.ohbeep.com)
+* [HikerJamz Geocaching Talk Show](http://www.blogtalkradio.com/hikerjamz)
+* [Madcacher Geocaching Blog](	http://www.madcacher.com/)
+* [Treasure Island Caching](http://treasureislandcaching.com/)
