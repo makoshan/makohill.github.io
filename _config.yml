@@ -41,7 +41,7 @@ navs:
 
   -
     href: /links/
-    label: 链接
+    label: 网址导航
 
   -
     href: /about/
@@ -80,12 +80,7 @@ collections:
 # ---------------- #
 #      Socials     #
 # ---------------- #
-github_username: opencaching
-douban_username: opencaching
-facebook_username: opencaching
-weibo_username: opencaching
-zhihu_username: opencaching
-twitter_username: opencaching
+
 
 # ---------------- #
 #      Comments    #
@@ -101,7 +96,7 @@ disqus_username: opencaching
 #    Analytics     #
 # ---------------- #
 google:
-    analytics_id: UA-80669434-1
+    analytics_id: opencaching
 
 # ---------------- #
 #      Datas       #
