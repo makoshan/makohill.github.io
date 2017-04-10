@@ -28,20 +28,15 @@ layout: default
 <!-- / .banner -->
 <section class="container content">
 <div class="columns">
-  <div class="column three-fourths" >
+  <div class="column" >
     <article class="article-content markdown-body">
     {{ content }}
+    {% include article-footer.html %}
     </article>
-    <div class="share">
-      {% include sns-share.html %}
-    </div>
+  
     <div class="comment">
       {% include comments.html %}
     </div>
-  </div>
-  <div class="column one-fourth">
-    {% include sidebar-search.html %}
-    {% include sidebar-post-nav.html %}
   </div>
 </div>
 </section>

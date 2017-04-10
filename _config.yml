@@ -4,24 +4,20 @@
 baseurl:
 url: http://mazhuang.org
 date_format: "ordinal"
-title: Opencaching
-subtitle: "地理中国"
-description: "geocaching "
-keywords: geocaching, Opencaching, mzlogin, mazhuang
+title: 以太周报
+subtitle: "汇聚每周以太坊社区热点"
+description: "ethweekly"
+keywords: ethweekly, ethereum
 favicon: /favicon.ico
 timezone: Asia/Shanghai
 encoding: "utf-8"
-source_code: https://github.com/makohill/makohill.github.io
 side_bar_repo_limit: 5
 
 # ---------------- #
 #      Author      #
 # ---------------- #
 author: Mako Shan
-organization: Opencaching, Inc.
-organization_url: https://www.opencaching.com.com
-location: HangZhou, China
-email: imakoshan@gmail.com
+email: makoshan@gmail.com
 
 # ---------------- #
 #    Navigation    #
@@ -41,7 +37,7 @@ navs:
 
   -
     href: /links/
-    label: 网址导航
+    label: 链接
 
   -
     href: /about/
@@ -65,6 +61,7 @@ quiet: false
 excerpt_separator: "\n\n"
 permalink: /:year/:month/:day/:title/
 gems:
+    - jekyll-github-metadata
     - rouge
 #     - jekyll-html-pipeline
     - jekyll-paginate
@@ -77,30 +74,22 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-# ---------------- #
-#      Socials     #
-# ---------------- #
-
+repository: makoshan/makoshan.github.io
 
 # ---------------- #
 #      Comments    #
 # ---------------- #
-# support provider: disqus, duoshuo, changyan
-comments_provider: disqus
-# !!!重要!!! 请修改下面两个用户名为你自己申请的
-# !!!Important!!! Please modify usernames below to yours
-duoshuo_username: opencaching
+# support provider: disqus, netease_gentie
+comments_provider: netease_gentie
+# !!!重要!!! 请修改下面这些信息为你自己申请的
+# !!!Important!!! Please modify infos below to yours
 disqus_username: opencaching
+netease_gentie_key: opencaching
+# 在使用网易云跟帖时可点击显示 Disqus
+lazy_load_disqus : true
 
 # ---------------- #
 #    Analytics     #
 # ---------------- #
 google:
     analytics_id: opencaching
-
-# ---------------- #
-#      Datas       #
-# ---------------- #
-skill_software_keywords: [opencaching]
-skill_mobile_app_keywords: [opencaching]
-skill_windows_keywords: [opencaching]
